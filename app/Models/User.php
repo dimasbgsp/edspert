@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'details',
+        'stock',
+        'price'
     ];
 
     /**
@@ -41,4 +44,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+    // sintaks diatas merupakan relasi tabel pada database
+    // public function orders > orders merupakan representasi dari nama tabel 
+    // hasMany berarti model user atau representasi dari tabel user memiliki relasi table OnetoMany
+    // salah satunya di model Order::class atau tabel orders
+    // dimana dapat diartikan satu User memiliki banyak Orders
 }
